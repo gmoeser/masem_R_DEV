@@ -1,2 +1,2 @@
 # masem_R_DEV
-masem R development paCKAGE - useful functions, misc, data etc.
+masem R development package - useful functions, misc, data etc.
