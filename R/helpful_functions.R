@@ -2,6 +2,7 @@
 #'
 #' @param package_name name of the package
 #'
+#' @description Helpful to find out if the latest version (build) is in search-path or not and prints out the version
 #' @return 
 #' @export
 #'
@@ -30,20 +31,32 @@ info_attached_package <- function(package_name) {
 #' @examples
 #' open_file_in_tempdir(object_to_store = iris)
 open_file_in_tempdir <- function(object_to_store) {
-  ## Cureently works only on Windows OS!
+  ## Curently works only on Windows OS!
   # detect OS
-  if ("Darwin" %in% Sys.info()[['sysname']]) {
-    stop("Currently only WIN OS supported")
-  }
+  #if ("Darwin" %in% Sys.info()[['sysname']]) {
+  #  stop("Currently only WIN OS supported")
+  #}
   # Find tempdir-folder
   tempdir_path <- tempdir()
+  
   # Store object in tempdir-folder
-  write.csv2(x = object_to_store, file = paste0(tempdir_path, "\\data.frame", ".csv"))
-  # Open the file
-  shell.exec(file = paste0(tempdir_path, "\\data.frame", ".csv"))
-}
-
-
+  if ("Darwin" %in% Sys.info()[['sysname']]) {
+    # Filepath
+    file_path_and_name <- paste0(tempdir_path, "/data.frame", ".csv")
+    # write
+    write.csv2(x = object_to_store, file = file_path_and_name)
+    # open file
+    system(paste("open", file_path_and_name)) 
+    }
+  else if ("Windows" %in% Sys.info()[['sysname']]) {
+    # Store object in tempdir-folder
+    write.csv2(x = object_to_store, file = paste0(tempdir_path, "\\data.frame", ".csv"))
+    # Open the file
+    shell.exec(file = paste0(tempdir_path, "\\data.frame", ".csv"))
+  }
+  return(warning("Please close the current file before opening another one!"))
+  }
+  
 
 #' Get OS
 #'
