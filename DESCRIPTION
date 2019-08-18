@@ -2,10 +2,15 @@ Package: masemRDEV
 Type: Package
 Title: Provides helpful functions to ease masem R development projects
 Version: 0.1.0
-Author: Who wrote it
+Authors@R: person("Guido", "Möser", email = "guido.moeser@masem.de",
+  role = c("aut", "cre"))
 Maintainer: The package maintainer <guido.moeser@masem.de>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Description: Provides several helpful functions and datasets.
+    OS, User etc. information, open a data.frame stored in tempfolder in an external software package.
+Depends: R (>= 3.1.0), utils
+License: GPL (>= 2)
 Encoding: UTF-8
+URL:
+   https://github.com/gmoeser/masem_R_DEV
 LazyData: true
+RoxygenNote: 6.1.1

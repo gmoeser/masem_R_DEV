@@ -1,4 +1,4 @@
-#' Information attached package
+#' @title Information attached package
 #'
 #' @param package_name name of the package
 #'
@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' library(survival)
+#' library(stats)
 #' info_attached_package(package_name = "survival")
 info_attached_package <- function(package_name) {
   if (paste0("package:",package_name) %in% search()) {
@@ -18,7 +18,7 @@ info_attached_package <- function(package_name) {
 }
 
 
-#' Store a data.frame in tempdir and open it 
+#' @title Store a data.frame in tempdir and open it 
 #'
 #' @description Stores a data.frame in tempdir and opens the file
 #' Please note: Currently only Windows supported 
@@ -31,10 +31,8 @@ info_attached_package <- function(package_name) {
 #' @examples
 #' open_file_in_tempdir(object_to_store = iris)
 open_file_in_tempdir <- function(object_to_store) {
-  
   # Find tempdir-folder
   tempdir_path <- tempdir()
-  
   # Store object in tempdir-folder
   if (Sys.info()[['sysname']] == "Darwin" | Sys.info()[['sysname']] == "Linux") {
     # Filepath
@@ -54,7 +52,9 @@ open_file_in_tempdir <- function(object_to_store) {
   }
   
 
-#' Get OS
+#' @title Get OS
+#'
+#' @description Prints out the os 
 #'
 #' @return operating system
 #' @export
