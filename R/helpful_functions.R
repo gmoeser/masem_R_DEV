@@ -31,16 +31,12 @@ info_attached_package <- function(package_name) {
 #' @examples
 #' open_file_in_tempdir(object_to_store = iris)
 open_file_in_tempdir <- function(object_to_store) {
-  ## Curently works only on Windows OS!
-  # detect OS
-  #if ("Darwin" %in% Sys.info()[['sysname']]) {
-  #  stop("Currently only WIN OS supported")
-  #}
+  
   # Find tempdir-folder
   tempdir_path <- tempdir()
   
   # Store object in tempdir-folder
-  if ("Darwin" %in% Sys.info()[['sysname']]) {
+  if (Sys.info()[['sysname']] == "Darwin" | Sys.info()[['sysname']] == "Linux") {
     # Filepath
     file_path_and_name <- paste0(tempdir_path, "/data.frame", ".csv")
     # write
