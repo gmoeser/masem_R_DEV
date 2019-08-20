@@ -78,3 +78,24 @@ get_os <- function(){
 }
 
 
+
+
+required_packages <- c("Rblpapi", "openxlsx", "ggplot2", "data.table", "mschart")
+
+
+# Install required packages if not installed already
+function <- load_and_install_packages(required_packages) {
+  packages_to_install <- required_packages[!(required_packages %in% installed.packages()[,"Package"])]
+  if (length(packages_to_install) > 0) {
+    install.packages(packages_to_install)}
+  
+  # Load required packages
+  for (packages in packages_to_install) {
+    require(packages, character.only = T)
+  }
+  
+  # Clean-up
+
+}
+
+
