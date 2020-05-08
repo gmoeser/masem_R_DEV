@@ -63,11 +63,11 @@ open_file_in_tempdir <- function(object_to_store) {
 #' get_os()
 get_os <- function(){
   sysinf <- Sys.info()
-  if (!is.null(sysinf)){
+  if (!is.null(sysinf)) {
     os <- sysinf['sysname']
     if (os == 'Darwin')
       os <- "MAC (osx)"
-  } else { ## mystery machine
+  } else {## mystery machine
     os <- .Platform$OS.type
     if (grepl("^darwin", R.version$os))
       os <- "osx"
@@ -104,14 +104,13 @@ load_and_install_packages <- function(required_packages) {
 
 
 
-#' @title New method to apply is.nan on a list or data.frame
+#' @title New method to apply is.nan on a data.frame
 #' 
-#' @description is.nan as well as is.infinte will not work on a list
-#' or data.frame.
+#' @description is.nan as well as is.infinte will not work on a data.frame.
 #'  
-#' @param x data.frame or list. 
+#' @param x data.frame. 
 #'
-#' @return data.frame or list.  
+#' @return data.frame.  
 #' @export
 #'
 #' @examples
@@ -134,14 +133,14 @@ is.nan.data.frame <- function(x) {
 
 
 
-#' @title New method to apply is.infinite on a list or data.frame
+#' @title New method to apply is.infinite on a data.frame
 #'
 #' @description is.nan as well as is.infinte will not work on a list
 #' or data.frame.
 #' 
-#' @param x data.frame or list. 
+#' @param x data.frame. 
 #'
-#' @return data.frame or list. 
+#' @return data.frame. 
 #' @export
 #'
 #' @examples
