@@ -102,3 +102,65 @@ load_and_install_packages <- function(required_packages) {
 }
 
 
+
+
+#' @title New method to apply is.nan on a list or data.frame
+#' 
+#' @description is.nan as well as is.infinte will not work on a list
+#' or data.frame.
+#'  
+#' @param x data.frame or list. 
+#'
+#' @return data.frame or list.  
+#' @export
+#'
+#' @examples
+#' # Generate data.frame
+#' df1 <- data.frame(ID = 1:5, Var1 = rnorm(5), Var2 = rnorm(5, 5, 1))
+#' # Add NaN and +/-Inf-Werte
+#' df1[2,2] <- NaN
+#' df1[4,3] <- Inf
+#' df1[3,3] <- -Inf
+#' # Print to console
+#' df1
+#' # Use the new method
+#' is.nan(df1)
+#' # Replace NaN by NA
+#' df1[is.nan(df1)] <- NA
+#' # Print
+#' df1
+is.nan.data.frame <- function(x) { 
+  do.call(cbind, lapply(x, is.nan))}
+
+
+
+#' @title New method to apply is.infinite on a list or data.frame
+#'
+#' @description is.nan as well as is.infinte will not work on a list
+#' or data.frame.
+#' 
+#' @param x data.frame or list. 
+#'
+#' @return data.frame or list. 
+#' @export
+#'
+#' @examples
+#' # Generate data.frame
+#' df1 <- data.frame(ID = 1:5, Var1 = rnorm(5), Var2 = rnorm(5, 5, 1))
+#' # Add NaN and +/-Inf-Werte
+#' df1[2,2] <- NaN
+#' df1[4,3] <- Inf
+#' df1[3,3] <- -Inf
+#' # Print to console
+#' df1
+#' # Use the new method
+#' is.infinite(df1)
+#' # Replace inf and -inf by NA
+#' df1[is.infinite(df1)] <- NA
+#' # Print
+#' df1
+is.infinite.data.frame <- function(x) {
+  do.call(cbind, lapply(x, is.infinite))}
+
+
+
