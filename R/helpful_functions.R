@@ -163,3 +163,40 @@ is.infinite.data.frame <- function(x) {
 
 
 
+
+#' @title Function to get paket version and corresponding R-base version
+#' 
+#' @description Based on a vector with package names returns a data.frame
+#' with package name, package version and corresponding R version
+#'
+#' @param Vektor_Paketliste character. Vector with package names
+#'
+#' @return data.frame. Three columns: Package name, package version and built
+#' @export
+#'
+#' @examples
+#' PackageInformation(c("base", "stats", "utils"))
+PackageInformation <- function(Vektor_Packages = c("base")) {
+  # Arguments: Vector_Packages
+  #  default: c("base")
+  
+  ## Check Input 
+  if (!is.character(Vektor_Packages)) {
+    stop("Input ist kein character-Vektor") 
+  }
+  
+  ## Get the currently installed packages
+  #   Result is a matrix, will be transformed into a data.frame:
+  InstalliertePakete <- data.frame(installed.packages())
+  
+  ## Extract relevant packages
+  InstalliertePaketePaketliste <- InstalliertePakete[InstalliertePakete$Package %in% Vektor_Packages,]
+  
+  ## Extract Package, Version and Built
+  InstalliertePakete_PaketnameVersionBuilt <- InstalliertePaketePaketliste[, c("Package", "Version", "Built")]
+  
+  # return
+  return(InstalliertePakete_PaketnameVersionBuilt)
+}
+
+
